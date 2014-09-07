@@ -3,28 +3,25 @@
 <f:if condition="{currentLevel} < {stopRecursionOnLevel}">
 	<f:alias map="{nextLevel : '{adwlm:Increment(i : currentLevel)}'}">
 		<f:if condition="{adwlm:ArrayKeyExists(key : currentCategory.uid, array : categoryTree, level : nextLevel)}">
+            <f:for each="{adwlm:ArrayValue(key : currentCategory.uid, array : categoryTree, level : nextLevel)}" as="childCategory">
 
-			<ul class="level{nextLevel}">
-				<f:for each="{adwlm:ArrayValue(key : currentCategory.uid, array : categoryTree, level : nextLevel)}" as="childCategory">
+                <f:alias map="{count : '{adwlm:categorycount(categorizedObject : settings.categorizedObject, categorizedObjectPids : settings.categorizedObjectPids, currentCategory : childCategory.uid, selectedCategories : selectedCategories)}'}">
 
-					<f:alias map="{count : '{adwlm:categorycount(categorizedObject : settings.categorizedObject, categorizedObjectPids : settings.categorizedObjectPids, currentCategory : childCategory.uid, selectedCategories : selectedCategories)}'}">
+                    <f:if condition="{settings.showCategoriesWithNoObjects} == 1">
+                        <f:then>
+                            <f:render partial="ChildCategory" arguments="{_all}" />
+                        </f:then>
+                        <f:else>
+                            <f:if condition="{count} > 0">
+                                <f:render partial="ChildCategory" arguments="{_all}" />
+                            </f:if>
+                        </f:else>
 
-						<f:if condition="{settings.showCategoriesWithNoObjects} == 1">
-							<f:then>
-								<f:render partial="ChildCategory" arguments="{_all}" />
-							</f:then>
-							<f:else>
-								<f:if condition="{count} > 0">
-									<f:render partial="ChildCategory" arguments="{_all}" />
-								</f:if>
-							</f:else>
+                    </f:if>
 
-						</f:if>
+                </f:alias>
 
-					</f:alias>
-
-				</f:for>
-			</ul>
+            </f:for>
 		</f:if>
 
 	</f:alias>
