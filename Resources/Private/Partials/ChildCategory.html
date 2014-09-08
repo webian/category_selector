@@ -3,11 +3,12 @@
 
 <f:if condition="{nextLevel} == 1">
     <f:then>
+        <!-- filter group -->
+        <f:alias map="{categoryTitleNoWhitespaces: '{v:format.eliminate(content: childCategory.title, whitespace: 1, nonAscii: 1)}'}">
         <div class="btn-group">
-            <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
-                {childCategory.title} <span class="caret"></span>
-            </button>
-            <ul class="dropdown-menu" role="menu">
+            <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">{childCategory.title} <span class="caret"></span></button>
+            <ul class="dropdown-menu it-button-group" role="menu" data-filter-group="{categoryTitleNoWhitespaces}">
+                <li class="level2 active"><a href="{f:uri.page()}#" class="it-button" data-filter=""><f:translate key='categories.all' /></a>
                 <f:render partial="ChildCategoryRecursion" arguments="{
                     categoryTree : categoryTree,
                     selectedCategories : selectedCategories,
@@ -17,12 +18,14 @@
                 />
             </ul>
         </div>
+        </f:alias>
     </f:then>
     <f:else>
+        <!-- filter -->
         <f:if condition="{nextLevel} == 2">
             <f:alias map="{childCategoryTitleNoWhitespaces: '{v:format.eliminate(content: childCategory.title, whitespace: 1, nonAscii: 1)}'}">
-                <li class="level{nextLevel} {f:if(condition:'{adwlm:InArrayExplode(needle : childCategory.uid, haystack : selectedCategories)}', then : 'selected', else : 'no')}">
-                    <a href="#" data-filter=".{childCategoryTitleNoWhitespaces}">{childCategory.title}</a>
+                <li class="level{nextLevel}" >
+                    <a href="{f:uri.page()}#" class="it-button" data-filter=".{childCategoryTitleNoWhitespaces}">{childCategory.title}</a>
                 </li>
             </f:alias>
         </f:if>

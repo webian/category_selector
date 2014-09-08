@@ -1,10 +1,8 @@
-{namespace adwlm=ADWLM\CategorySelector\ViewHelpers}
-
 <f:if condition="{settings.selectedCategories}">
 	<f:render partial="SelectedCategories" arguments="{selectedCategoriesArray : settings.selectedCategoriesArray}" />
 </f:if>
 
-<div class="contentnavigation filter">
+<div id="it-filters">
     <f:for each="{categoryTree.0}" as="currentCategory">
         <f:render partial="ChildCategoryRecursion" arguments="{
             categoryTree : categoryTree,
