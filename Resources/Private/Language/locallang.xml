@@ -12,8 +12,19 @@
 			<label index="categories.clearSelection">Reset</label>
 			<label index="categories.nothingFoundForSelection">No objects for current selection</label>
 			<label index="categories.objectCount">Count</label>
+			<label index="categories.all">All</label>
 
 		</languageKey>
+
+        <languageKey index="it" type="array">
+
+            <label index="categories.selectedCategories.label">Selezione</label>
+            <label index="categories.clearSelection">Reset</label>
+            <label index="categories.nothingFoundForSelection">Nessun oggetto per la selezione corrente</label>
+            <label index="categories.objectCount">Conteggio</label>
+            <label index="categories.all">Tutti</label>
+
+        </languageKey>
 
 		<languageKey index="de" type="array">
 
