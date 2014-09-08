@@ -1,3 +1,4 @@
+{namespace v=FluidTYPO3\Vhs\ViewHelpers}
 {namespace adwlm=ADWLM\CategorySelector\ViewHelpers}
 
 <f:if condition="{nextLevel} == 1">
@@ -19,7 +20,11 @@
     </f:then>
     <f:else>
         <f:if condition="{nextLevel} == 2">
-            <li class="level{nextLevel} {f:if(condition:'{adwlm:InArrayExplode(needle : childCategory.uid, haystack : selectedCategories)}', then : 'selected', else : 'no')}"><a href="#">{childCategory.title}</a></li>
+            <f:alias map="{childCategoryTitleNoWhitespaces: '{v:format.eliminate(content: childCategory.title, whitespace: 1, nonAscii: 1)}'}">
+                <li class="level{nextLevel} {f:if(condition:'{adwlm:InArrayExplode(needle : childCategory.uid, haystack : selectedCategories)}', then : 'selected', else : 'no')}">
+                    <a href="#" data-filter=".{childCategoryTitleNoWhitespaces}">{childCategory.title}</a>
+                </li>
+            </f:alias>
         </f:if>
     </f:else>
 </f:if>
