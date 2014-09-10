@@ -5,9 +5,9 @@
 		<f:if condition="{adwlm:ArrayKeyExists(key : currentCategory.uid, array : categoryTree, level : nextLevel)}">
             <f:for each="{adwlm:ArrayValue(key : currentCategory.uid, array : categoryTree, level : nextLevel)}" as="childCategory">
 
-                <f:alias map="{count : '{adwlm:categorycount(categorizedObject : settings.categorizedObject, categorizedObjectPids : settings.categorizedObjectPids, currentCategory : childCategory.uid, selectedCategories : selectedCategories)}'}">
+                <f:alias map="{count : '{adwlm:categorycount(categorizedObject : settings.isotopeFilter.categorizedObject, categorizedObjectPids : settings.isotopeFilter.categorizedObjectPids, currentCategory : childCategory.uid, selectedCategories : selectedCategories)}'}">
 
-                    <f:if condition="{settings.showCategoriesWithNoObjects} == 1">
+                    <f:if condition="{settings.isotopeFilter.showCategoriesWithNoObjects} == 1">
                         <f:then>
                             <f:render partial="ChildCategory" arguments="{_all}" />
                         </f:then>

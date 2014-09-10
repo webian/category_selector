@@ -40,12 +40,9 @@ class IsotopefilterViewHelper extends \TYPO3\CMS\Fluid\Core\Widget\AbstractWidge
 	}
 
 	/**
-	 * @param \TYPO3\CMS\Extbase\Persistence\QueryResultInterface $objects
-	 * @param string $as
-	 * @param array $configuration
 	 * @return string
 	 */
-	public function render(\TYPO3\CMS\Extbase\Persistence\QueryResultInterface $objects, $as, array $configuration = array('propertyName' => 'category', 'displaySelectedCategoryNames' => 1)) {
+	public function render() {
 		return $this->initiateSubRequest();
 	}
 }
