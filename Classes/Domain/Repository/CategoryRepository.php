@@ -26,7 +26,7 @@ namespace ADWLM\CategorySelector\Domain\Repository;
 
 class CategoryRepository extends \TYPO3\CMS\Extbase\Domain\Repository\CategoryRepository {
 
-	protected $defaultOrderings = array('title' => \TYPO3\CMS\Extbase\Persistence\QueryInterface::ORDER_ASCENDING);
+	protected $defaultOrderings = array('sorting' => \TYPO3\CMS\Extbase\Persistence\QueryInterface::ORDER_ASCENDING);
 
 	/**
 	 * Finds categories based on a selection (CSV list)
