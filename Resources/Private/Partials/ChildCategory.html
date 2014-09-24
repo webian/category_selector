@@ -6,9 +6,9 @@
         <!-- filter group -->
         <f:alias map="{categoryTitleNoWhitespaces: '{v:format.eliminate(content: childCategory.title, whitespace: 1, nonAscii: 1)}'}">
         <div class="btn-group">
-            <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">{childCategory.title} <span class="caret"></span></button>
+            <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" data-title="{childCategory.title}">{childCategory.title} <span class="caret"></span></button>
             <ul class="dropdown-menu it-button-group" role="menu" data-filter-group="{categoryTitleNoWhitespaces}">
-                <li class="level2 active"><a href="{f:uri.page()}#" class="it-button" data-filter=""><f:translate key='categories.all' /></a>
+                <li class="level2 active"><a href="{f:uri.page()}#" class="it-button filter-all" data-filter=""><f:translate key='categories.all' /></a>
                 <f:render partial="ChildCategoryRecursion" arguments="{
                     categoryTree : categoryTree,
                     selectedCategories : selectedCategories,
